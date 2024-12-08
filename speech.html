@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            position: relative;
+            background-color: rgba(191, 213, 232, 0.999);
+        }
+        .main{
+        background-color: white;
+        position: absolute;
+        top: 220px;
+        left: 650px;
+        border: 2px solid rgb(186, 179, 165);
+        padding: 30px 35px;
+
+    }
+    #text1{
+        padding: 27px 22px;
+        margin-top: 8px;
+        border: 2px solid black;
+        font-size: large;
+        font-family: 'Times New Roman', Times, serif;
+    }
+    #text1::placeholder{
+        color: black;
+        padding-right: 80px;
+        padding-bottom: 20px;
+    }
+    .btn{
+        background-color: rgb(59, 63, 194);
+        color: white;
+        padding: 5px;
+        margin-left: 93px;
+        margin-top: 14px;
+    }
+    </style>
+</head>
+<body>
+   <div class="main">
+    <h1 style="letter-spacing: 2px; margin-left: 8px; margin-top: 20px;" >Text To Speak</h1><br><hr>
+    <textarea id="text1" placeholder="Enter a Text"></textarea><br>
+    <button onclick="update()" class="btn">Speak</button>
+    <script>
+        var Speech = new SpeechSynthesisUtterance();
+        function update(){
+            var talks= document.getElementById('text1').value;
+            if(talks.trim() !== ""){
+                Speech.text=talks;
+                Speech.rate=1;
+                Speech.pitch=0;
+                Speech.volume=7;
+                window.speechSynthesis.speak(Speech);
+            }
+            else
+            {
+                alert("enter a text");
+            }
+        }
+       
+    </script>
+   </div>
+</body>
+</html>
